@@ -147,9 +147,9 @@ app.get('/api/users/:_id/logs', async (req, res) => {
     let exercises = await Exercise.find(filter)
       .limit(limit ? parseInt(limit) : undefined)
       .sort({ date: 1 });
-    
-    // Format exercises for response
+      // Format exercises for response
     const log = exercises.map(exercise => ({
+      _id: exercise._id,
       description: exercise.description,
       duration: exercise.duration,
       date: exercise.date.toDateString()
